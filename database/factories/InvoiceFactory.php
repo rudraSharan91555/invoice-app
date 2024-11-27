@@ -25,7 +25,7 @@ class InvoiceFactory extends Factory
             'terms_and_conditions' => $this->faker->paragraph(2),
             'sub_total' => $this->faker->numberBetween(100,1000),
             'discount' => $this->faker->numberBetween(10,100),
-            'total' => $this->faker->numberBetween(20,2000),
+            'total' => $this->faker->numberBetween(10,1000),
         ];
     }
 }

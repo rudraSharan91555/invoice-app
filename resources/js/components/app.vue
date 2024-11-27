@@ -1,3 +1,4 @@
 <template>
-    <h1>  Hello World This page is Indicate is Laravel and Vue Project</h1>
+    <!-- <h1>Hello ! this is my first vuejs 3 component</h1> -->
+    <router-view/>
 </template>

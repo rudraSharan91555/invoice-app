@@ -6,7 +6,7 @@
         "dev": "vite"
     },
     "devDependencies": {
-        "@vitejs/plugin-vue": "^5.2.0",
+        "@vitejs/plugin-vue": "^5.2.1",
         "autoprefixer": "^10.4.20",
         "axios": "^1.7.4",
         "concurrently": "^9.0.1",
@@ -17,7 +17,17 @@
     },
     "dependencies": {
         "vue": "^3.5.13",
-        "vue-loader": "^17.4.2",
+        "vue-loader": "^17.3.1",
         "vue-router": "^4.5.0"
-    }
+    },
+    "name": "invoice-app",
+    "version": "1.0.0",
+    "description": "<p align=\"center\"><a href=\"https://laravel.com\" target=\"_blank\"><img src=\"https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg\" width=\"400\" alt=\"Laravel Logo\"></a></p>",
+    "main": "postcss.config.js",
+    "directories": {
+        "test": "tests"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
 }
