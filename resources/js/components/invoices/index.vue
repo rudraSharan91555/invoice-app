@@ -1,8 +1,13 @@
 <script setup>
     import axios from 'axios';
-import { onMounted,ref } from 'vue';
+    import { onMounted,ref } from 'vue';
+    import { useRouter } from 'vue-router';
+
+
+    const router = useRouter()
 
     let invoices = ref([])
+    let searchInvoice = ref([])
 
     onMounted(async () =>{
         getInvoices()
@@ -10,8 +15,22 @@ import { onMounted,ref } from 'vue';
 
     const getInvoices = async () =>{
         let response =await axios.get("/api/get_all_invoice")
-        console.log('response',response)
+        // console.log('response',response)
+        invoices.value = response.data.invoices
     }
+
+    const search = async () =>{
+        let response = await axios.get('/api/search_invoice?s='+searchInvoice.value)
+        console.log('response',response.data.invoices)
+        invoices.value = response.data.invoices
+    }
+
+    const newInvoice = async () =>{
+        let form = await axios.get("/api/create_invoice")
+        console.log('form',form.data)
+        router.push('/invoice/new')
+    }
+
 
 </script>
 <template>
@@ -23,7 +42,7 @@ import { onMounted,ref } from 'vue';
                 <h2 class="invoice__title">Invoices</h2>
             </div>
             <div>
-                <a class="btn btn-secondary">
+                <a class="btn btn-secondary" @click="newInvoice">
                     New Invoice
                 </a>
             </div>
@@ -58,7 +77,8 @@ import { onMounted,ref } from 'vue';
                 </div>
                 <div class="relative">
                     <i class="table--search--input--icon fas fa-search "></i>
-                    <input class="table--search--input" type="text" placeholder="Search invoice">
+                    <input class="table--search--input" type="text" placeholder="Search invoice"
+                    v-model="searchInvoice" @keyup="search()">
                 </div>
             </div>
 
@@ -72,13 +92,19 @@ import { onMounted,ref } from 'vue';
             </div>
 
             <!-- item 1 -->
-            <div class="table--items">
-                <a href="#" class="table--items--transactionId">#093654</a>
-                <p>Jan 18, 9:31am</p>
-                <p>#093654</p>
-                <p>Jonathan Yu</p>
-                <p>Jan 18, 9:31am</p>
-                <p> $ 16,943</p>
+            <div class="table--items" v-for="item in invoices" :key="item.id" v-if="invoices.length > 0">
+                <a href="#" class="table--items--transactionId">#{{ item.id }}</a>
+                <p>{{ item.date }}</p>
+                <p>#{{ item.number }}</p>
+                <p v-if="item.customer">
+                    {{ item.customer.firstname }}
+                </p>
+                <p v-else></p>
+                <p>{{ item.due_date }}</p>
+                <p> $ {{ item.total }}</p>
+            </div>
+            <div class="table--items" v-else >
+                <p>Invoice not found</p>
             </div>
         </div>
         

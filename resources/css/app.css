@@ -607,3 +607,114 @@ ul {
 .grand__total--items span {
     font-size: 26px;
 }
+
+/* Default styles (Desktop-first approach) */
+
+/* For screens less than or equal to 1200px (Large tablets and smaller desktops) */
+@media screen and (max-width: 1200px) {
+    .container {
+        max-width: 80%;
+    }
+
+    .table--heading, 
+    .table--items {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .invoice__title {
+        font-size: 1.4em;
+    }
+
+    .btn {
+        padding: 7px 12px;
+    }
+}
+
+/* For screens less than or equal to 992px (Tablets) */
+@media screen and (max-width: 992px) {
+    .container {
+        max-width: 90%;
+    }
+
+    .card__header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .table--heading, 
+    .table--items {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .table--search {
+        grid-template-columns: 1fr;
+    }
+
+    .invoice__title {
+        font-size: 1.3em;
+    }
+
+    .btn {
+        font-size: 0.9em;
+    }
+}
+
+/* For screens less than or equal to 768px (Mobile landscape) */
+@media screen and (max-width: 768px) {
+    .table--filter--list {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .table--heading, 
+    .table--items {
+        grid-template-columns: 1fr;
+    }
+
+    .btn-secondary {
+        font-size: 0.8em;
+        padding: 5px 10px;
+    }
+
+    .table--search--input {
+        padding-left: 35px;
+    }
+}
+
+/* For screens less than or equal to 576px (Mobile portrait) */
+@media screen and (max-width: 576px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .card__header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .invoice__title {
+        font-size: 1.2em;
+    }
+
+    .btn-secondary {
+        width: 100%;
+        text-align: center;
+    }
+
+    .table--search--wrapper,
+    .relative {
+        margin-bottom: 10px;
+    }
+
+    .table--heading,
+    .table--items {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .table--items p,
+    .table--items a {
+        font-size: 0.9em;
+    }
+}
